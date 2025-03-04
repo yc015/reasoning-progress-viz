@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #edf1f7;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;  /* Optional: space between logo and text */
+}
+
+.title-logo {
+  width: 40px;   /* Adjust size as needed */
+  height: 40px;
+  object-fit: contain;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.subject {
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subject:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3);
+}
+
+.subject a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.subject img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.subject p {
+  margin-top: 8px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #333;
+  word-wrap: break-word;
+  white-space: normal;
+}
