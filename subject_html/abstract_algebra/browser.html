@@ -5,12 +5,20 @@
   <title>Subject Browser - Abstract Algebra</title>
   <link rel="stylesheet" href="../../browser.css">
   <link rel="icon" href="../../icons/favicon.ico" type="image/x-icon">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <h1 id="subject-title">
     <div id="subject-title">Abstract Algebra Questions</div>
-    <img src="../../icons/favicon.png" alt="Logo" class="title-logo">
+      <img src="../../icons/favicon.png" alt="Logo" class="title-logo">
   </h1>
+  <div class="back-container">
+    <a href="../../index.html" class="back-button" title="Go back to Home">
+        <i class="fa-solid fa-house"></i>
+        Home
+    </a>
+  </div>
   <div class="container" id="questions-container">
     <!-- Question cards will be generated here by JavaScript -->
   </div>
@@ -22,10 +30,10 @@
   <script>
     // Set your subject name here (use the same lowercase name as used in the folder and file naming)
     const subject = "abstract_algebra"; // e.g., "abstract_algebra"
-    const totalQuestions = 133;
+    const totalQuestions = 99;
     const container = document.getElementById("questions-container");
     const subjectTitle = document.getElementById("subject-title");
-    const skipIds = [14, 56, 82, 86, 118, 124, 125, 130]
+    const skipIds = [1, 5, 14, 53, 58, 67, 93]
 
     // Update the header text by replacing underscores with spaces
     subjectTitle.textContent = "Abstract Algebra Questions";
