@@ -27,11 +27,14 @@ h1 {
 
 .subject {
   background: #fff;
-  padding: 10px;
+  padding: 12px 8px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .subject:hover {

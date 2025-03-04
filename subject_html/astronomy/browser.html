@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subject Browser - Astronomy</title>
+  <link rel="stylesheet" href="../../browser.css">
+  <link rel="icon" href="../../icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <h1>
+    <div id="subject-title">Astronomy Questions</div>
+    <img src="../../icons/favicon.png" alt="Logo" class="title-logo">
+
+    
+  </h1>
+  <div class="back-container">
+    <a href="../../index.html" class="back-button" title="Go back to Home">
+        <i class="fa-solid fa-house"></i>
+        Home
+    </a>
+  </div>
+  
+  <div class="container" id="questions-container">
+    <!-- Question cards will be generated here by JavaScript -->
+  </div>
+
+  <footer>
+    <p>Author: Yida Chen, See our ARBOR page <a href="https://github.com/ARBORproject/arborproject.github.io/discussions/11">[Project Page]</a> for more information. ©Yida Chen, 2025</p>
+  </footer>
+
+  <script>
+    // Set your subject name here (use the same lowercase name as used in the folder and file naming)
+    const subject = "astronomy"; // e.g., "abstract_algebra"
+    const totalQuestions = 151;
+    const container = document.getElementById("questions-container");
+    const subjectTitle = document.getElementById("subject-title");
+    const skipIds = [3, 4, 9, 10, 12, 17]
+
+    // Update the header text by replacing underscores with spaces
+    subjectTitle.textContent = "Astronomy Questions";
+    
+    // Loop to create 150 question cards
+    for (let i = 0; i <= totalQuestions; i++) {
+      if (skipIds.includes(i)) continue;
+      // Create the question card element
+      const card = document.createElement("div");
+      card.classList.add("question-card");
+
+      // Create the anchor element
+      const link = document.createElement("a");
+      // Build the URL for the visualization file
+      link.href = `html_vis/${subject}_questionID_${i}_correct_answer_logit_vis.html`;
+
+      // Create the image element (thumbnail)
+      const img = document.createElement("img");
+      // Build the URL for the thumbnail image
+      img.src = `thumbnails/${subject}_questionID_${i}_thumbnail.png`;
+      img.alt = `The visualization for this question is not available...`;
+
+      // Create the paragraph element for the question text
+      const para = document.createElement("p");
+      para.textContent = `Question ${i + 1}`;
+
+      // Append image and paragraph to the link, then the link to the card
+      link.appendChild(para);
+      link.appendChild(img);
+      card.appendChild(link);
+
+      // Append the card to the container
+      container.appendChild(card);
+    }
+  </script>
+</body>
+</html>
