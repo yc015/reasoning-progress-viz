@@ -34,6 +34,7 @@ body {
   
   .back-button {
     display: inline-block;
+    position: relative; /* needed for pseudo-element positioning */
     text-decoration: none;
     font-size: 16px;
     color: #007bff;
@@ -46,6 +47,32 @@ body {
   .back-button:hover {
     background-color: #007bff;
     color: #fff;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+  }
+  
+  .back-button:hover::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    width: 120%;
+    height: 8px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 80%);
+    border-radius: 50%;
+    animation: shadowGrow 0.5s alternate infinite;
+  }
+  
+  @keyframes shadowGrow {
+    from {
+      bottom: -10px;
+      opacity: 1;
+      width: 100%;
+    }
+    to {
+      bottom: -15px;
+      opacity: 0.6;
+      width: 140%;
+    }
   }
   

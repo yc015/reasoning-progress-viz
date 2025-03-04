@@ -66,23 +66,51 @@ body {
   /* Back to home button styles */
   .back-container {
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 20px;
   }
-  
+
   .back-button {
     display: inline-block;
-    padding: 10px;
-    /* background-color: #007bff; */
-    color: #243a86;
-    border-radius: 50%;
-    font-size: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative; /* needed for pseudo-element positioning */
     text-decoration: none;
+    font-size: 16px;
+    color: #2c92ff;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
   .back-button:hover {
-    /* background-color: #0056b3; */
+    background-color: #2c92ff;
+    color: #fff;
     transform: translateY(-3px);
+  }
+  
+  .back-button:hover::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -8px;
+    width: 120%;
+    height: 8px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 80%);
+    border-radius: 50%;
+    animation: shadowGrow 0.5s alternate infinite;
+  }
+  
+  @keyframes shadowGrow {
+    from {
+      bottom: -6px;
+      opacity: 1;
+      width: 100%;
+    }
+    to {
+      bottom: -12px;
+      opacity: 0.6;
+      width: 140%;
+    }
   }
   
   footer {
