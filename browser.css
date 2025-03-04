@@ -39,7 +39,7 @@ body {
   .question-card:hover {
     transform: translateY(-10px);
     /* Enhanced shadow with a slight blue tint */
-    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.35);
   }
   
   .question-card a {
