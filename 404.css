@@ -67,12 +67,12 @@ body {
     from {
       bottom: -10px;
       opacity: 1;
-      width: 80%;
+      width: 70%;
     }
     to {
       bottom: -15px;
       opacity: 0.6;
-      width: 130%;
+      width: 120%;
     }
   }
   
