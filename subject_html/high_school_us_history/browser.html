@@ -2,23 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Subject Browser - High School US History</title>
+  <title>Subject Browser - High School Us History</title>
   <link rel="stylesheet" href="../../browser.css">
   <link rel="icon" href="../../icons/favicon.ico" type="image/x-icon">
-  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <h1>
-    <div id="subject-title">High School US History Questions</div>
+  <h1 id="subject-title">
+    <div>High School Us History Questions</div>
     <img src="../../icons/favicon.png" alt="Logo" class="title-logo">
   </h1>
-  <div class="back-container">
+
+  <!-- Toggle buttons -->
+  <div class="toggle-container">
+    <button id="toggle-text" class="toggle-button-ct">Colored Text</button>
+    <button id="toggle-bg" class="toggle-button-cb">Colored Background</button>
     <a href="../../index.html" class="back-button" title="Go back to Home">
-        <i class="fa-solid fa-house"></i>
-        Home
+      <i class="fa-solid fa-house"></i>
+      Home
     </a>
   </div>
+  
   <div class="container" id="questions-container">
     <!-- Question cards will be generated here by JavaScript -->
   </div>
@@ -28,47 +32,87 @@
   </footer>
 
   <script>
-    // Set your subject name here (use the same lowercase name as used in the folder and file naming)
+    // Set your subject name here (must match folder and file naming)
     const subject = "high_school_us_history"; // e.g., "abstract_algebra"
     const totalQuestions = 125;
     const container = document.getElementById("questions-container");
     const subjectTitle = document.getElementById("subject-title");
-    const skipIds = [125]
-    const includeIds = [11, 23, 32, 52, 91, 94, 95, 96, 100, 124, 125]
+    const skipIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 92, 93, 97, 98, 99, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123];
 
-    // Update the header text by replacing underscores with spaces
-    subjectTitle.textContent = "High School US History Questions";
-    
-    // Loop to create 150 question cards
+    // Set default mode to "text" if no choice stored
+    let mode = localStorage.getItem("visMode") || "text"; 
+
+    // Update the toggle button appearance based on mode
+    const toggleTextBtn = document.getElementById("toggle-text");
+    const toggleBgBtn = document.getElementById("toggle-bg");
+
+    function updateToggleButtons() {
+      if (mode === "text") {
+        toggleTextBtn.classList.add("active");
+        toggleBgBtn.classList.remove("active");
+      } else {
+        toggleBgBtn.classList.add("active");
+        toggleTextBtn.classList.remove("active");
+      }
+    }
+    updateToggleButtons();
+
+    // Function to generate the href based on current mode and question id
+    function getHref(id) {
+      const folder = (mode === "text") ? "html_vis" : "html_vis_bg";
+      return `${folder}/${subject}_questionID_${id}_correct_answer_logit_vis.html`;
+    }
+
+    // Generate question cards
     for (let i = 0; i <= totalQuestions; i++) {
-      if (!includeIds.includes(i)) continue;
-      // Create the question card element
+      if (skipIds.includes(i)) continue;
+
       const card = document.createElement("div");
       card.classList.add("question-card");
 
-      // Create the anchor element
       const link = document.createElement("a");
-      // Build the URL for the visualization file
-      link.href = `html_vis/${subject}_questionID_${i}_correct_answer_logit_vis.html`;
+      link.href = getHref(i);
 
-      // Create the image element (thumbnail)
       const img = document.createElement("img");
-      // Build the URL for the thumbnail image
-      img.src = `thumbnails/${subject}_questionID_${i}_thumbnail.png`;
+      img.src = `thumbnails/high_school_us_history_questionID_${i}_thumbnail.png`;
       img.alt = `The visualization for this question is not available...`;
 
-      // Create the paragraph element for the question text
       const para = document.createElement("p");
       para.textContent = `Question ${i + 1}`;
 
-      // Append image and paragraph to the link, then the link to the card
       link.appendChild(para);
       link.appendChild(img);
       card.appendChild(link);
-
-      // Append the card to the container
       container.appendChild(card);
     }
+
+    // Function to update all question card links based on current mode
+    function updateLinks() {
+      const links = document.querySelectorAll(".question-card a");
+      let index = 1;
+      links.forEach(link => {
+        while (skipIds.includes(index)) {
+          index++;
+        }
+        link.href = getHref(index);
+        index++;
+      });
+    }
+
+    // Toggle button event listeners
+    toggleTextBtn.addEventListener("click", function() {
+      mode = "text";
+      localStorage.setItem("visMode", mode);
+      updateToggleButtons();
+      updateLinks();
+    });
+
+    toggleBgBtn.addEventListener("click", function() {
+      mode = "bg";
+      localStorage.setItem("visMode", mode);
+      updateToggleButtons();
+      updateLinks();
+    });
   </script>
 </body>
 </html>

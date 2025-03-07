@@ -74,9 +74,9 @@ body {
     display: inline-block;
     position: relative; /* needed for pseudo-element positioning */
     text-decoration: none;
-    font-size: 16px;
+    /* font-size: 14px; */
     color: #2c92ff;
-    padding: 10px;
+    padding: 7px;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
@@ -126,3 +126,55 @@ body {
   footer p {
     margin: 0;
   }
+
+  /* Toggle container and button styling */
+.toggle-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.toggle-button-ct {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-button-ct.active {
+  background-color: #fff;
+  color: #007bff;
+  box-shadow: 4px 4px 4px rgba(112, 112, 112, 0.35);
+  border-color: #007bff;
+}
+
+.toggle-button-ct:hover {
+  transform: translateY(-3px);
+}
+
+.toggle-button-cb {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-button-cb.active {
+  background-color: #007bff;
+  color: #fff;
+  /* box-shadow: -4px 4px 4px rgba(0, 123, 255, 0.35); */
+  box-shadow: 4px 4px 4px rgba(0, 123, 255, 0.35);
+}
+
+.toggle-button-cb:hover {
+  transform: translateY(-3px);
+}
+
+/* Existing styles for container, question-card, etc. remain unchanged */
