@@ -147,8 +147,10 @@ body {
 .toggle-button-ct.active {
   background-color: #fff;
   color: #007bff;
+  /* color: #169f38; */
   box-shadow: 4px 4px 4px rgba(112, 112, 112, 0.35);
   border-color: #007bff;
+  /* border-color: #169f38; */
 }
 
 .toggle-button-ct:hover {
@@ -169,8 +171,10 @@ body {
 .toggle-button-cb.active {
   background-color: #007bff;
   color: #fff;
-  /* box-shadow: -4px 4px 4px rgba(0, 123, 255, 0.35); */
-  box-shadow: 4px 4px 4px rgba(0, 123, 255, 0.35);
+  /* background-color: #169f38; */
+  /* color: #fff; */
+  box-shadow: -4px 4px 4px rgba(0, 123, 255, 0.35);
+  /* box-shadow: 4px 4px 4px rgba(10, 156, 41, 0.25); */
 }
 
 .toggle-button-cb:hover {

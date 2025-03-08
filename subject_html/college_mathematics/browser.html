@@ -37,7 +37,7 @@
     const totalQuestions = 99;
     const container = document.getElementById("questions-container");
     const subjectTitle = document.getElementById("subject-title");
-    const skipIds = [9, 13, 18, 26, 33, 35, 54, 58, 75, 81, 83, 86, 92, 93, 97];
+    const skipIds = [18, 26, 33, 35, 54, 58, 75, 81, 83, 86, 92, 93, 97];
 
     // Set default mode to "text" if no choice stored
     let mode = localStorage.getItem("visMode") || "text"; 
@@ -89,7 +89,7 @@
     // Function to update all question card links based on current mode
     function updateLinks() {
       const links = document.querySelectorAll(".question-card a");
-      let index = 1;
+      let index = 0;
       links.forEach(link => {
         while (skipIds.includes(index)) {
           index++;

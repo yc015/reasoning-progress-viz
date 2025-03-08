@@ -89,7 +89,7 @@
     // Function to update all question card links based on current mode
     function updateLinks() {
       const links = document.querySelectorAll(".question-card a");
-      let index = 1;
+      let index = 0;
       links.forEach(link => {
         while (skipIds.includes(index)) {
           index++;
