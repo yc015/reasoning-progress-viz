@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subject Browser - High School Psychology</title>
+  <link rel="stylesheet" href="../../browser.css">
+  <link rel="icon" href="../../icons/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <h1 id="subject-title">
+    <div>High School Psychology Questions</div>
+    <img src="../../icons/favicon.png" alt="Logo" class="title-logo">
+  </h1>
+
+  <!-- Toggle buttons -->
+  <div class="toggle-container">
+    <button id="toggle-text" class="toggle-button-ct">Colored Text</button>
+    <button id="toggle-bg" class="toggle-button-cb">Colored Background</button>
+    <a href="../../index.html" class="back-button" title="Go back to Home">
+      <i class="fa-solid fa-house"></i>
+      Home
+    </a>
+  </div>
+  
+  <div class="container" id="questions-container">
+    <!-- Question cards will be generated here by JavaScript -->
+  </div>
+
+  <footer>
+    <p>Author: Yida Chen, See our ARBOR page <a href="https://github.com/ARBORproject/arborproject.github.io/discussions/11">[Project Page]</a> for more information. ©Yida Chen, 2025</p>
+  </footer>
+
+  <script>
+    // Set your subject name here (must match folder and file naming)
+    const subject = "high_school_psychology"; // e.g., "abstract_algebra"
+    const totalQuestions = 544;
+    const container = document.getElementById("questions-container");
+    const subjectTitle = document.getElementById("subject-title");
+    const skipIds = [64, 137, 254, 317, 324, 419, 447, 503];
+
+    // Set default mode to "text" if no choice stored
+    let mode = localStorage.getItem("visMode") || "text"; 
+
+    // Update the toggle button appearance based on mode
+    const toggleTextBtn = document.getElementById("toggle-text");
+    const toggleBgBtn = document.getElementById("toggle-bg");
+
+    function updateToggleButtons() {
+      if (mode === "text") {
+        toggleTextBtn.classList.add("active");
+        toggleBgBtn.classList.remove("active");
+      } else {
+        toggleBgBtn.classList.add("active");
+        toggleTextBtn.classList.remove("active");
+      }
+    }
+    updateToggleButtons();
+
+    // Function to generate the href based on current mode and question id
+    function getHref(id) {
+      const folder = (mode === "text") ? "html_vis" : "html_vis_bg";
+      return `${folder}/${subject}_questionID_${id}_correct_answer_logit_vis.html`;
+    }
+
+    // Generate question cards
+    for (let i = 0; i <= totalQuestions; i++) {
+      if (skipIds.includes(i)) continue;
+
+      const card = document.createElement("div");
+      card.classList.add("question-card");
+
+      const link = document.createElement("a");
+      link.href = getHref(i);
+
+      const img = document.createElement("img");
+      img.src = `thumbnails/high_school_psychology_questionID_${i}_thumbnail.png`;
+      img.alt = `The visualization for this question is not available...`;
+
+      const para = document.createElement("p");
+      para.textContent = `Question ${i + 1}`;
+
+      link.appendChild(para);
+      link.appendChild(img);
+      card.appendChild(link);
+      container.appendChild(card);
+    }
+
+    // Function to update all question card links based on current mode
+    function updateLinks() {
+      const links = document.querySelectorAll(".question-card a");
+      let index = 0;
+      links.forEach(link => {
+        while (skipIds.includes(index)) {
+          index++;
+        }
+        link.href = getHref(index);
+        index++;
+      });
+    }
+
+    // Toggle button event listeners
+    toggleTextBtn.addEventListener("click", function() {
+      mode = "text";
+      localStorage.setItem("visMode", mode);
+      updateToggleButtons();
+      updateLinks();
+    });
+
+    toggleBgBtn.addEventListener("click", function() {
+      mode = "bg";
+      localStorage.setItem("visMode", mode);
+      updateToggleButtons();
+      updateLinks();
+    });
+  </script>
+</body>
+</html>
